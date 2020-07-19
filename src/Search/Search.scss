@@ -1,0 +1,13 @@
+@import '../assest/styles/base.scss';
+
+.Search{
+    height: 85vh;
+    overflow: hidden;
+    overflow: scroll;
+    width: 100%;
+
+    &-input{
+        margin-top: 20px;
+    }
+    
+}

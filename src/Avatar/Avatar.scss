@@ -1,0 +1,19 @@
+@import '../assest/styles/base.scss';
+
+.Avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  
+    &--md {
+      width: 36px;
+      height: 36px;
+    }
+  
+    &--lg {
+      width: 100px;
+      height: 100px;
+      box-shadow: 0 0 4px 0 rgba(163,163,163,1);
+    }
+  }

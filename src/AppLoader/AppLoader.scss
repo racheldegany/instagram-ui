@@ -1,0 +1,43 @@
+@import '../assest/styles/base.scss';
+
+.AppLoader{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $color-bg;
+    z-index: 99;
+
+    img{
+        border-radius: 50%;
+        width: 80%;
+        height: 50%;
+        
+    }
+
+    .AppLoader-instagram{
+        z-index: 98;
+        position: absolute;
+        bottom: 10%;
+        font-size: 30px;
+        // font-family: piedra;
+    
+    }    
+}
+
+
+
+@include media-breakpoint-up(md) {
+    .AppLoader{
+        img{
+            border-radius: 50%;
+            width: auto;
+            height: auto;
+        }
+
+        .instagram{
+            font-size: 40px; 
+        }
+    }
+}
