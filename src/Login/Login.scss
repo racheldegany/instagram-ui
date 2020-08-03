@@ -1,46 +1,28 @@
 @import '../assest/styles/base.scss';
 
 .Login{
-    // margin-top: 10%;
-    img{
-        // width: auto;
-        height: 80px;
-        transform: rotate(180deg);
-    }
+    height: 90vh;
+
     h2 {
         font-size: 40px;
-        // position: absolute;
-        // color: $color-primary;
-        // &::after{
-        //     content: url('../assest/img/line-2.jpg');
-        //     // background: ;
-        //     background-color: blue($color: #000000);
-        //     width: 150px;
-        //     height: 20px;
-        //     // position: relative;
-        //     transform: rotate(180deg);
-        //     top: 50%;
-        //     // display:block;
-        // }
+        color: $color-secondary;
     }
 
-
+    h3{
+        color: $color-primary;   
+    }
 
     Form {
-        // padding: 0;
-        // margin-top: 10%;
-        // z-index: -1;
-
-        // top: 100;
-        // margin-top: 60px;
         .error {
             height: 30px;
-            padding-left: 40%;
-            // padding-left: 0;
+            padding-left: 39%;
         }
         button {
             background-color: white;
             width: 100%;
+        }
+        a{
+            color: $color-secondary;
         }
     }
   

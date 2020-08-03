@@ -4,7 +4,6 @@ import SearchResult from './SearchResult/SearchResult';
 import './Search.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faGlasses} from '@fortawesome/free-solid-svg-icons';
-// import './SearchResult/SearchResult';
 
 
 function Search(props) {
@@ -13,25 +12,25 @@ function Search(props) {
     const [query, setQuery] = useState('');
 
     useEffect( () => {
-        async function getUsers() {
-            try{
-                const res = await fetch( `${config.apiUrl}/users?username=${query}`, {
-                    credentials: 'include'
-                });
-                if(res.status === 400){
-                    console.log('posts not found');
-                    return;
-                }
-                const usersArr = await res.json();
-                setUsers(usersArr);
-                // console.log(usersArr);
-            } catch (err) {
-                console.log('unknown error');
-            }
-        }
         if(query) getUsers();
         if(!query) setUsers([]);
     } ,[query]);
+
+    async function getUsers() {
+        try{
+            const res = await fetch( `${config.apiUrl}/users?username=${query}`, {
+                credentials: 'include'
+            });
+            if(res.status === 400){
+                console.log('posts not found');
+                return;
+            }
+            const usersArr = await res.json();
+            setUsers(usersArr);
+        } catch (err) {
+            console.log('unknown error');
+        }
+    }
 
     function hasNoResult(){
         return query && users.length === 0;
@@ -39,27 +38,25 @@ function Search(props) {
     
     return (
         <div className="Search">
-            <header className="Search-input text-center">
-                <input placeholder="Search profile" 
-                        className="rounded-pill pl-2"
+            <header className="Search-input ">
+                <input placeholder="Search profile " 
+                        className="shadow-sm"
                         type="text" 
                         value={query}
                         onChange={(e) => (setQuery(e.target.value))}
                 />
             </header>
-
-            <div className="d-md-flex flex-md-wrap justify-content-md-around">
             {hasNoResult()
-                ? <div className="d-flex flex-column justify-content-center"><FontAwesomeIcon icon={faGlasses}/>No result found</div>
+                ? <div className="user_message d-flex flex-column align-items-center justify-content-center">
+                    <FontAwesomeIcon icon={faGlasses}/>
+                    <span>No result found</span>
+                  </div>
                 :    users.map(user => (
                         <SearchResult
                             key={user._id}
                             user={user}  
                         />
                     ))}
-
-            </div>
-            
         </div>
     );
 }

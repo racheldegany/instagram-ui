@@ -1,0 +1,19 @@
+@import '../assest/styles/base.scss';
+
+.PostPage{
+    margin-top: $component-mt;
+    .image{
+        height: 300px;
+        // width: 100%;
+        display: flex;
+        // padding: 0px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        img{
+            width: 100%;
+            // padding: 0px;
+
+        }
+    }
+}

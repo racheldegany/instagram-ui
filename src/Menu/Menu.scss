@@ -1,80 +1,45 @@
 @import '../assest/styles/base.scss';
 
 .Menu {
-    // background: rgb(120,201,186);
-    // background: radial-gradient(circle, rgba(120,201,186,1) 29%, rgba(88,68,101,1) 100%);
-    // // -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px -13px 15px 0px rgba(0,0,0,0); 
     font-size: 26px;
-    // align-items: baseline;
-    //    height: 70px;
-    //    width: auto;
-    //    position: absolute;
-    //    bottom: 0;
+    align-items: center;
+    bottom: 0;
+    text-shadow: 2px 0px 3px rgba(88, 68, 101, 1);
     
     .menu-instagram{
-        
-        // font-size: 28px;
-        
-        position: absolute;
-        top: 0;
         box-shadow: 0px 5px 10px 0px rgba(88, 68, 101, 1);
         text-align: center;
         
     }
-    
     ul{
+        z-index: 1;
+        position: absolute;
+        bottom: 0;
         width: 100%;
         padding-right: 0;
         box-shadow: 0px -5px 10px 0px rgba(88, 68, 101, 1);
-        
     }
-
+    
     .menu-instagram, ul{
-        background: rgb(120,201,186);
         background: radial-gradient(circle, rgba(120,201,186,1) 29%, rgba(88,68,101,1) 100%);
-    // -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px -13px 15px 0px rgba(0,0,0,0); 
-    // box-shadow: 0px -5px 10px 0px rgba(88, 68, 101, 1);
     }
-    
-
-    // .instagram{
-    //    font-size: 30px;
-    // //    font-family: Rakkas;
-    //     font-family: Yatra One;
-    //    padding: 0px;
-        
-    // }
-
-    
 }
 
 @include media-breakpoint-up(md) {
     .Menu {
-        background: rgb(120,201,186);
         background: radial-gradient(circle, rgba(120,201,186,1) 29%, rgba(88,68,101,1) 100%);
-        box-shadow:    0px 5px 10px 0px rgba(88, 68, 101, 1);
-//       background-color: blue;
-//       position: absolute;
-//       top: 0;
-//       height: 70px;
-
+        box-shadow: 0px 5px 10px 0px rgba(88, 68, 101, 1);
+        z-index: 1;
+        
         .menu-instagram, ul{
             box-shadow: none;
             background: none;
         }
         .menu-instagram{
             text-align: start;
-            margin-left: 10%;
-            padding-left: 0;
-            a{
-                padding-top: 0;
-                font-size: 28px;
-            }
         }
         ul{
-            // margin-right: 10%;
-            padding-right: 2%;
-            // width: 30%;
+            position: unset;
         }
     }
   }

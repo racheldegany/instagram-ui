@@ -1,10 +1,11 @@
 import React from 'react';
-import Avatar from '../../Avatar/Avatar';
+import Avatar from '../../common/Avatar/Avatar';
 import './SearchResult.scss';
+import {Link} from 'react-router-dom';
 
 function SearchResult(props) {
     return (
-        <div className="SeachResult rounded  col-md-4 ">
+        <Link className="SeachResult rounded shadow-sm" to={`/profile/${props.user._id}`}>
             <Avatar image={props.user.avatar}
                     size="md"
                     className="avatar "
@@ -14,7 +15,7 @@ function SearchResult(props) {
                 <div>{props.user.bio}</div>
             </div>
             
-        </div>
+        </Link>
     );
 }
 

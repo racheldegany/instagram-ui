@@ -35,10 +35,9 @@ function Login(props) {
         }
         return res;
     }
-       //do a redirect to register
 
     return (
-        <div className="Login ">
+        <div className="Login d-flex flex-column justify-content-center">
             <h2 className="instagram-title text-center">Instagram</h2>
             <h3 className="text-center">Log into your account</h3>
             <Formik
@@ -48,21 +47,21 @@ function Login(props) {
             >
                 {({ isSubmitting }) =>(
                     <Form className="mt-5">
-                        <div className="row justify-content-around">
+                        <div className="row justify-content-around align-items-baseline">
                             <label className="col-3" htmlFor="username">Username:</label>
                             <Field className="rounded-pill form-control col-7" name="username" placeholder="Enter username..." type="text" id="username"/>
                         </div>
                         <div className="error">
                             <ErrorMessage className="text-danger" component="small" name="username"/>
                         </div>
-                        <div className="row justify-content-around">
+                        <div className="row justify-content-around align-items-baseline">
                             <label className="col-3" htmlFor="password">Password:</label>
                             <Field className="rounded-pill form-control col-7" name="password" placeholder="Enter password..." type="password" id="password"/>
                         </div>
                         <div className="error">
                             <ErrorMessage className="text-danger" component="small" name="password"/>
                         </div>
-                        <div className="error text-center">
+                        <div className="text-center" style={{height: '30px'}}>
                            {isError && <span className="text-danger">Username or password is incorrect</span> }
                         </div>  
                         <div className="form-group text-center">

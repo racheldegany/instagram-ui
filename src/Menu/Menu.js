@@ -5,19 +5,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faHome, faPlusCircle, faHandHoldingHeart, faSearch, } from '@fortawesome/free-solid-svg-icons';
 import MenuAvatar from './MenuAvatar/MenuAvatar';
 
-//d-flex justify-content-around align-items-center - Menu
-//d-md-block d-none instagram
-
 function Menu(props) {
 
    return (
-        <div className="Menu">
-            <div className="menu-instagram col-12 col-md-6  ">
-                <a className="instagram-title navbar-brand text-white " href="#">Instagram</a>
+        <div className="Menu d-md-flex">
+            <div className="menu-instagram col-12 col-md-4  ">
+                <Link to="/" className="instagram-title navbar-brand text-white ">
+                    Instagram
+                </Link>
             </div>
-            
-           
-            <ul className="nav justify-content-around justify-content-md-between d-flex col-12 col-md-4 offset-md-7">
+            <ul className="nav justify-content-around justify-content-md-between d-flex col-12 col-md-5 offset-md-2">
                 <li className="nav-item active">
                     <Link className="text-white " to='/'>
                         <FontAwesomeIcon icon={faHome} />
@@ -30,7 +27,7 @@ function Menu(props) {
                 </li>
                 <li className="nav-item active">
                     <Link to="/search" className="text-white">
-                        <FontAwesomeIcon icon={faSearch}/>
+                        <FontAwesomeIcon icon={faSearch} />
                     </Link>
                 </li>
                 <li className="nav-item active">
@@ -39,9 +36,7 @@ function Menu(props) {
                     </Link>
                 </li>
                 <li className="nav-item active">
-                    <Link to="/profile"  className="text-white">
-                        <MenuAvatar/>
-                    </Link>
+                    <MenuAvatar/>
                 </li>
             </ul> 
         </div>

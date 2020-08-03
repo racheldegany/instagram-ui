@@ -1,14 +1,13 @@
 @import '../assest/styles/base.scss';
 
 .Profile{
-    height: 85vh;
-    overflow: hidden;
-    overflow: scroll;
+    height: 90vh;
+    // overflow: hidden;
+    // overflow: scroll;
+    overflow-y: auto;
+    margin-top: $component-mt;
 
-    &-header{
-        padding: 5px;
-        border: 1px black solid;
-        margin-bottom: 5px;
+    
 
-    }
+    
 }

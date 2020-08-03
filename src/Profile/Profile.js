@@ -1,28 +1,32 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Avatar from '../Avatar/Avatar';
+
 import { UserContext } from '../user-context';
 import config from '../config/index';
 import './Profile.scss';
-import Post from '../Post/Post';
+import Post from '../common/Post/Post';
+import { useParams } from 'react-router-dom';
+import ProfileUser from './ProfileUser/ProfileUser';
 
 function Profile(props) {
 
-    const {user} = useContext(UserContext);
+    // const { user } = useContext(UserContext);
     const [posts, setPosts] = useState([]);
+    const { id } = useParams();
+    
     
     useEffect(() => {
-		getPosts();
-	}, [user]);
+        getPosts();
+	}, [id]);
 
+    
     async function getPosts() {
 		try {
-			if (!user._id) {
+			if (!id) {
 				return;
 			}
-			const res = await fetch(config.apiUrl + '/users/'+ user._id + '/posts?sort=-1', {
+			const postsArr = await (await fetch(config.apiUrl + '/users/'+ id + '/posts?sort=-1', {
 				credentials: 'include'
-			});
-			const postsArr = await res.json();
+			})).json();
 			setPosts(postsArr);
 		} catch(err) {
 			console.log(err);
@@ -32,23 +36,9 @@ function Profile(props) {
 
 
     return (
-        <div className="Profile col-12">
-            <header className="Profile-header row">
-                <Avatar size="lg" image={user.avatar} className="col-3"/>
-                <div className="col-8">
-                    <div>{user.username}</div>
-                    <div className="d-flex justify-content-around">
-                        <div className="col"> {posts.length} posts</div>
-                        <div className="col"> 0 followers</div>
-                        <div className="col"> 0 following</div>
-                    </div>
-                    <div>
-                        This is real this is me..
-                    </div>
-                </div>
-                
-            </header>
-            <div className="Profile-posts col-12 d-md-flex flex-md-wrap justify-content-md-around">
+        <div className="Profile">
+            <ProfileUser userId={id} postsNum={posts.length}/>
+            <div className="Profile-posts d-md-flex flex-md-wrap justify-content-md-around">
                 {posts.map(post => (
                     <Post postData={post}
                             key={post._id}

@@ -1,0 +1,77 @@
+@import '../../assest/styles/base.scss';
+// @import '~reasct-easy-crop/react-easy-crop';
+
+.PostCreate{
+    margin-top: $component-mt;
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 82vh;
+        // align-items: ;
+
+        input{
+            display: none;
+        }
+        
+        .start_input_photo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+
+            label{
+                font-size: 100px;
+                color: $color-secondary;
+            }
+        }
+
+        .cropped_image{
+            width: 100%;
+            // height: 100%;
+        }
+
+        .change_input_photo{
+                
+            label{
+                font-size: 22px;
+                color: $color-secondary;
+            }
+
+            .reactEasyCrop_Container{
+                background-color: rgba($color-primary, $alpha: 1.0);
+                z-index: 1;
+            }
+            
+            .show_result_btn{
+                position: absolute;
+                bottom: 8%;
+                right: 5%;
+                z-index: 2;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 22px;
+            }
+        }
+
+        .description{
+            textarea{
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    .post{
+        text-align: center;
+        button{
+            background-color: $color-secondary;
+            color: white;
+        }
+    }
+}
