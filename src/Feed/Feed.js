@@ -27,7 +27,7 @@ function Feed(props) {
     }
 
     return (
-        <div className="Feed d-md-flex flex-md-wrap justify-content-md-around">
+        <div className="Feed d-md-flex flex-md-wrap">
             {posts.map(post => (
                 <Post postData={post}
                       key={post._id}

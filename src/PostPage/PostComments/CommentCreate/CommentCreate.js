@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
 import Loader from '../../../Loader/Loader';
 import { CommentCreateSchema } from './CommentCreate.schema';
-import { useHistory } from 'react-router-dom';
 import config from '../../../config/index';
+import Avatar from '../../../common/Avatar/Avatar';
+import { UserContext } from '../../../user-context';
+import './CommentCreate.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShareSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 function CommentCreate({postId, onAdd}) {
+
+    const { user } = useContext(UserContext);
 
     const submit = async (values, {resetForm}) => {
         try{
@@ -27,23 +33,28 @@ function CommentCreate({postId, onAdd}) {
     }
     
     return (
+        
+
         <Formik
         initialValues={{content: ''}}
         validationSchema={CommentCreateSchema}
         onSubmit={submit}
         >
         {({errors, touched, isSubmitting}) => (
-            <Form>
+            <Form className=" CommentCreate d-flex align-items-center justify-content-between">
                 
-                <div className="form-group">
+                <Avatar image={user?.avatar} size="sm"/>
+                
+                {/* <div className="form-group"> */}
                     {/* <label className="col" >Description</label> */}
-                    <Field  className="rounded-pill" as="textarea" placeholder="Add comment.." name="content"/>
-                </div >
+                    <Field  className="rounded-pill" type="text" placeholder="Add comment.." name="content" id="comment"/>
+                {/* </div > */}
 
                 {isSubmitting && <Loader/>}
-                <div className="form-group text-right">
-                        <button type="submit" className="btn btn-dark" disabled={isSubmitting}> Comment</button>
-                </div>
+                {/* <div className="form-group text-right"> */}
+                        <button type="submit" className="btn" disabled={isSubmitting}><FontAwesomeIcon icon={ faShareSquare}/></button>
+                {/* </div> */}
+            
             
             </Form>
         )}

@@ -1,0 +1,15 @@
+@import '../../assest/styles/base.scss';
+
+.Username {
+    font-size: 14px;
+    // border-radius: 50%;
+    // border: 2px solid #ffffff;
+  
+    &_md {
+        font-size: 18px;
+    }
+  
+    &_lg {
+        font-size: 28px;
+    }
+  }

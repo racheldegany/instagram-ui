@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
 import config from '../../config/index';
+import { useContext } from 'react';
+import { UserContext } from '../../user-context';
+
 
 
 export const ProfileEditSchema = Yup.object().shape({
@@ -22,10 +25,14 @@ const memo = {
   };
 
   async function checkDup(type, value) {
+
     if(memo[type].hasOwnProperty(value)){
       return memo[type][value];
     }
-    const res = await fetch(config.apiUrl + `/users/check?${type}=${value}`);
+    // if(user[type] === value) return true;
+
+    const res = await fetch(config.apiUrl + `/users/check?${type}=${value}`,{credentials: 'include'});
+    console.log(res);
     memo[type][value] = !(await res.json());
 	  return memo[type][value];
   };

@@ -6,6 +6,7 @@ import PostComment from './PostComment/PostComment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment} from '@fortawesome/free-regular-svg-icons';
 import CommentCreate from './CommentCreate/CommentCreate';
+import './PostComments.scss';
 // import { useParams } from 'react-router-dom';
 
 function PostComments({postId}) {
@@ -25,7 +26,7 @@ function PostComments({postId}) {
             // if (!id) {
                 // 	return;
                 // }
-                const commentsArr = await (await fetch(config.apiUrl + '/posts/'+ postId + '/comment', {
+                const commentsArr = await (await fetch(config.apiUrl + '/posts/'+ postId + '/comment?sort=-1', {
                     credentials: 'include'
                 })).json();
                 setComments(commentsArr);
@@ -37,21 +38,26 @@ function PostComments({postId}) {
         }
         
     function onAddedComment(comment) {
-        setComments([...comments, comment]);
+        setComments([comment, ...comments ]);
     }
 
     return (
         <>
             {isLoading ? <Loader/>
-            :<>
-              <FontAwesomeIcon icon={faComment}/>
-              {comments.map(comment => (
-                   <PostComment comment={comment} key={comment._id}/>
-                   ))
-                   
-                   }
-                <CommentCreate postId={postId} onAdd={onAddedComment}/>
-            </>
+            :<div className="PostComments">
+                <div className="comments">
+                    {comments.map(comment => (
+                        <PostComment comment={comment} key={comment._id} />
+                        ))
+                        
+                    }
+                </div>
+                <div className="create_comment d-flex justify-content-center align-items-center">
+
+                    <CommentCreate postId={postId} onAdd={onAddedComment}/>
+                </div>
+                
+            </div>
             }
                  
         </>

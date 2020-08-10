@@ -1,21 +1,43 @@
 @import '../assest/styles/base.scss';
 
 .Login{
-    height: 90vh;
+    height: 100vh;
+    // border: 6px double $color-primary;
 
-    h2 {
-        font-size: 40px;
-        color: $color-secondary;
+    header{
+        height: 30vh;
+        background-image: url('../assest/img/login.register.jpg');
+        background-size: cover;
+
+        h2 {
+            font-size: 60px;
+            color: $color-secondary;
+            text-shadow: 2px 0px 3px rgb(255, 255, 255);
+        }
+        
+        h3{
+            color: white;
+                font-size: 30px;
+                text-shadow: 2px 0px 3px $color-primary;
+        }
+
+        @include media-breakpoint-up(md) {
+            height: 100vh;
+        }
     }
+    
+    form {
 
-    h3{
-        color: $color-primary;   
-    }
-
-    Form {
+        h3{
+            color: $color-primary ;
+            text-shadow: 2px 0px 3px $color-secondary;
+            border-bottom: 1px dashed $color-secondary;
+            // padding-bottom: 5px;
+        }
+        
         .error {
             height: 30px;
-            padding-left: 39%;
+            padding-left: 4%;
         }
         button {
             background-color: white;
@@ -24,6 +46,11 @@
         a{
             color: $color-secondary;
         }
+        input{
+            border: none;
+            border: 1px dashed $color-secondary ;
+            background-color: rgba($color: white, $alpha: 0.7);
+        }
     }
-  
+    
 }

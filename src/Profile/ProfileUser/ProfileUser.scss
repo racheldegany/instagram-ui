@@ -1,11 +1,21 @@
 @import '../../assest/styles/base.scss';
 
 .Profile-header{
-    padding: 5px;
+    padding-top: 2%;
     margin-bottom: 5px;
+    border: 2px dashed $color-secondary;
 
-    div .editUser{
-        display: none;
+
+    .profile_details{
+        border-top: 2px dashed $color-secondary;
+        height: 100%;
+        div{
+            padding: 2% 0;
+        }
+    }
+
+    .bio{
+        word-break: break-word;
     }
 
 }

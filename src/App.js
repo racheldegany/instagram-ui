@@ -29,7 +29,6 @@ function App() {
     async function getUser() {
       const user = await UserService.get() 
     setUser(user);
-    // setTimeout(() => setLoading(false), 3000);
     setLoading(false)
       if(!user) {
         return history.push('/login');
@@ -39,18 +38,16 @@ function App() {
     
   }, [history]);
 
-  //flex-md-column-reverse
-
   return (
     <UserContext.Provider value={{user, setUser}}>
+      
       {isLoading && <AppLoader/>}
-      <div className=" App d-flex flex-column vh-100">
+      <div className=" App d-flex flex-column vh-100 ">
           {user && <Menu />}
           <div className="app-body flex-grow-1" >
             <Route
               render={({location}) => (
                 <PageTransition
-                // enterAnimation=""
                 preset="scaleDownScaleUp"
                 transitionKey={location.pathname}
                 >
@@ -62,6 +59,7 @@ function App() {
                         <Login/>
                     </Route>
                     <Route path="/profile/edit">
+                        
                         <ProfileEdit/>
                     </Route>
                     <Route path="/profile/:id">

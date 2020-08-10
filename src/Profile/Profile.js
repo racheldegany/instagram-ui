@@ -4,7 +4,7 @@ import { UserContext } from '../user-context';
 import config from '../config/index';
 import './Profile.scss';
 import Post from '../common/Post/Post';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ProfileUser from './ProfileUser/ProfileUser';
 
 function Profile(props) {
@@ -38,11 +38,11 @@ function Profile(props) {
     return (
         <div className="Profile">
             <ProfileUser userId={id} postsNum={posts.length}/>
-            <div className="Profile-posts d-md-flex flex-md-wrap justify-content-md-around">
+            <div className="Profile-posts d-flex flex-wrap">
                 {posts.map(post => (
-                    <Post postData={post}
-                            key={post._id}
-                    />
+                    <Link to={`/posts/${post._id}`} className="col-4 p-1">
+                        <img className="  w-100" src={`${config.apiUrl}/posts/${post.image}`} key={post._id}/>
+                    </Link>
                 ))}
             </div>
         </div>

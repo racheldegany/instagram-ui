@@ -2,27 +2,47 @@
 
 .Register{
     height: 100vh;
-    
-    h2 {
-        margin-bottom: 10%;
-        color: $color-primary;
-    }
-    Form {
-        // padding: 0;
-        margin-top: 10%;
-        // z-index: -1;
+    header{
+        height: 30vh;
+        background-image: url('../assest/img/login.register.jpg');
+        background-size: cover;
 
-        // top: 100;
-        // margin-top: 60px;
+        h2 {
+            font-size: 60px;
+            color: $color-secondary;
+            text-shadow: 2px 0px 3px rgb(255, 255, 255);
+        }
+
+        @include media-breakpoint-up(md) {
+            height: 100vh;
+        }
+    }
+    
+    form {
+
+        h3{
+            color: $color-primary ;
+            text-shadow: 2px 0px 3px $color-secondary;
+            border-bottom: 1px dashed $color-secondary;
+        }
+        
         .error {
             height: 30px;
-            padding-left: 39%;
+            padding-left: 4%;
         }
         button {
-            margin-top: 10%;
             background-color: white;
             width: 100%;
+        }
+        
+        input{
+            border: none;
+            border: 1px dashed $color-secondary ;
+            background-color: rgba($color: white, $alpha: 0.7);
         }
     }
   
 }
+
+
+

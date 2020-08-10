@@ -95,7 +95,7 @@ function PostCreate(props) {
     const inputPhoto = !imageSrc ? 'start_input_photo' : 'change_input_photo';
 
     return (
-        <div className="PostCreate"> 
+        <div className="PostCreate container"> 
             {/* <h2> Create Post</h2> */}
             <Formik
                 initialValues={{description: '', image: ''}}
@@ -103,14 +103,8 @@ function PostCreate(props) {
                 onSubmit={submit}
             >
                 {({errors, touched, isSubmitting, setFieldValue}) => (
-                    <Form>
-                        {croppedImage && <img src={URL.createObjectURL(croppedImage)} onClick={()=> setCroppedImage(null)} className="cropped_image"/>}
-                        <div className={inputPhoto}>
-                            <label for="image"><FontAwesomeIcon icon={faCloudUploadAlt}/>
-                                <input type="file" name="image" id="image" onChange={(e) => onFileChange(e)}/>
-                            </label>
-                            
-                            {imageSrc && !croppedImage && <div> 
+                    <Form className="d-flex flex-column flex-md-row">
+                        {imageSrc && !croppedImage && <div> 
                                 <Cropper
                                     image={imageSrc}
                                     crop={crop}
@@ -127,16 +121,24 @@ function PostCreate(props) {
                                 ><FontAwesomeIcon icon={faCheckCircle}/></button> 
                             </div> 
                             } 
+                        <div className="col-md-8 p-0 p-md-2">
+                            {croppedImage && <img src={URL.createObjectURL(croppedImage)} onClick={()=> setCroppedImage(null)} className="cropped_image p-0"/>}
+                            <div className={inputPhoto}>
+                                <label for="image"><FontAwesomeIcon icon={faCloudUploadAlt}/>
+                                    <input type="file" name="image" id="image" onChange={(e) => onFileChange(e)}/>
+                                </label>
+                            </div>
                         </div>
-                        <div className="form-group description shadow">
+                       
+                        <div className="description d-flex flex-column justify-content-center align-items-center ">
                             {/* <label className="col" >Description</label> */}
-                            <Field as="textarea" placeholder="Add description.." name="description"/>
+                            <Field as="textarea" placeholder="Add description.." name="description" className="mb-4"/>
+                            {isSubmitting && <Loader/>}
+                            <div className="post mt-4 ">
+                                    <button type="submit" className="btn shadow-sm" disabled={isSubmitting}> Post</button>
+                            </div>
                         </div >
 
-                        {isSubmitting && <Loader/>}
-                        <div className="post ">
-                                <button type="submit" className="btn shadow-sm" disabled={isSubmitting}> Post</button>
-                        </div>
                     </Form>
                 )}
             </Formik>

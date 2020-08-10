@@ -9,12 +9,12 @@ function Menu(props) {
 
    return (
         <div className="Menu d-md-flex">
-            <div className="menu-instagram col-12 col-md-4  ">
-                <Link to="/" className="instagram-title navbar-brand text-white ">
+            <div className="menu-instagram col-12 col-md-7 ">
+                <Link to="/" className="instagram-title navbar-brand text-white">
                     Instagram
                 </Link>
             </div>
-            <ul className="nav justify-content-around justify-content-md-between d-flex col-12 col-md-5 offset-md-2">
+            <ul className="nav justify-content-around justify-content-md-between align-items-center d-flex col-12 col-md-5">
                 <li className="nav-item active">
                     <Link className="text-white " to='/'>
                         <FontAwesomeIcon icon={faHome} />

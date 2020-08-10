@@ -1,19 +1,55 @@
 @import '../assest/styles/base.scss';
 
 .PostPage{
-    margin-top: $component-mt;
-    .image{
-        height: 300px;
-        // width: 100%;
-        display: flex;
-        // padding: 0px;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        img{
-            width: 100%;
+    // margin-top: $component-mt;
+    height: 77vh;
+    overflow-y: auto;
+    // position: relative;
+     
+    button{
+        border: none;
+        background: none;
+    }
+    
+    .post_image {
+        // height: 45vh;
+        // .image{
+            // height: 100%;
+            // width: 100%;
+            // display: flex;
             // padding: 0px;
+            // align-items: center;
+            // justify-content: center;
+            // overflow: hidden;
+            img{
+                width: 100%;
+                // height: 100%;
+                // padding: 0px;
+                
+            }
+            
+            // .Post_actions{
+            //     // position: -webkit-sticky;
+            //     position: sticky;
+            //     background-color: blue;
+            //     top: 10%;
+            // }
+    // }
 
-        }
+    }
+    .details{
+        font-size: 14px;
+    }
+
+    .description{
+        word-break: break-word;
+        // height: 10%;
+    }
+
+    @include media-breakpoint-up(md){
+        overflow-y: unset;
+        // height: 90vh;
+
+        
     }
 }

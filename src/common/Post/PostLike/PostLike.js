@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import config from '../../../config/index';
 import './PostLike.scss';
 import { UserContext } from '../../../user-context';
@@ -9,7 +8,7 @@ import { UserContext } from '../../../user-context';
 function PostLike(props) {
 
     const {user} = useContext(UserContext);
-    const [likes, setLikes]= useState(props.likes);
+    // const [likes, setLikes]= useState(props.likes);
     const [hasLiked, setHasLiked] = useState(hasUserLiked());
 
     function hasUserLiked() {
@@ -23,7 +22,7 @@ function PostLike(props) {
     async function handleLike() {
         try {
             const post = hasLiked ? await like() : await unlike();
-            setLikes(post.likes);
+            // setLikes(post.likes);
         } catch(err) {
             console.log(err);
         }
@@ -53,13 +52,13 @@ function PostLike(props) {
 		return await response.json();
 	}
     
-    const likedClass = hasLiked ? "userLiked" : '';
+    const likedClass = hasLiked ? "red" : 'black';
 
     return (
-        <div className="PostLike" >
-           <FontAwesomeIcon icon={faHeart} className={likedClass} onClick={() => setHasLiked(!hasLiked)}/>
-            <div className="allLikes flex-wrap">{likes.length} likes</div>
-        </div>
+        <>
+           <FontAwesomeIcon icon={faHeart} style={{color: likedClass}} onClick={() => setHasLiked(!hasLiked)}/>
+            {/* <div className="allLikes flex-wrap">{likes.length} likes</div> */}
+        </>
     );
 }
 
