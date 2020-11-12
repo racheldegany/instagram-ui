@@ -1,20 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import config from '../config/index';
-import SearchResult from './SearchResult/SearchResult';
 import './Search.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faGlasses} from '@fortawesome/free-solid-svg-icons';
+import UserResult from '../common/UserResult/UserResult';
 
 
 function Search(props) {
 
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
+    const [timer, setTimer]= useState();
 
     useEffect( () => {
-        if(query) getUsers();
-        if(!query) setUsers([]);
+        if(query) {
+            setIsSearching(true);
+            debounce(getUsers)
+        }
+        
+        // getUsers();
+        if(!query || query === '') setUsers([]);
     } ,[query]);
+
+
+    function debounce(cb){
+    if (timer){
+        clearTimeout(timer);
+    }
+    setTimer(setTimeout(cb, 500));
+    }
 
     async function getUsers() {
         try{
@@ -23,17 +38,21 @@ function Search(props) {
             });
             if(res.status === 400){
                 console.log('posts not found');
+                setIsSearching(false);
                 return;
             }
             const usersArr = await res.json();
+            console.log(usersArr);
             setUsers(usersArr);
+            setIsSearching(false);
+
         } catch (err) {
             console.log('unknown error');
         }
     }
 
     function hasNoResult(){
-        return query && users.length === 0;
+        return query && !isSearching && users.length === 0;
     }
     
     return (
@@ -51,12 +70,15 @@ function Search(props) {
                     <FontAwesomeIcon icon={faGlasses}/>
                     <span>No result found</span>
                   </div>
-                :    users.map(user => (
-                        <SearchResult
+                : <div className="d-flex flex-wrap">
+                    {users.map(user => (
+                        <UserResult
                             key={user._id}
                             user={user}  
                         />
                     ))}
+                    </div>
+                    }
         </div>
     );
 }

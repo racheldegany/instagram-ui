@@ -21,6 +21,7 @@ function Feed(props) {
             }
             const postsArr = await res.json();
             setPosts(postsArr);
+            console.log(postsArr);
         } catch (err) {
             console.log('unknown error');
         }

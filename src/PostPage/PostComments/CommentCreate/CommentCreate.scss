@@ -1,8 +1,8 @@
 @import '../../../assest/styles/base.scss';
 
 .CommentCreate{
-    height: 50px;
-    width: 100%;
+    height: 100%;
+    // width: 100%;
     // z-index: 2;
     // position: fixed;
 
@@ -15,15 +15,25 @@
     // top: 0;
     // background-color: rgba($color: $color-primary, $alpha: 0.1);
     // z-index: 4;
-    // background-image: url('https://i.pinimg.com/236x/e0/7d/cb/e07dcbc6e01a42972cca9e10830cd37d.jpg');
-    // background-size: contain;
+    .modal-content{
+        border: 3px dashed $color-secondary;
+        background-image: url('https://i.pinimg.com/236x/e0/7d/cb/e07dcbc6e01a42972cca9e10830cd37d.jpg');
+        background-size: contain;
+        height: 20%;
 
-    input{
-        background: none;
-        border: none;
-        width: 100%;
-        padding-left: 8%;
-
+    }
+    .modal-body{
+        height: 100%;
+        form{
+            textarea{
+                background: none;
+                border: none;
+                width: 100%;
+                padding-left: 4%;
+                margin-left: 5%;
+        
+            }
+        }
     }
 
     

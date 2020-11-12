@@ -7,7 +7,7 @@ import Username from '../../../common/Username/Username';
 function  PostComment(props) {
     return (
         <div className="PostComment d-flex">
-            <Link className="col-2 d-flex justify-content-center align-items-center" to={`/profile/${props.comment.user._id}`}>
+            <Link className="col-2 d-flex justify-content-center align-items-start" to={`/profile/${props.comment.user._id}`}>
                 <Avatar size="sm" image={props.comment.user.avatar}/>
             </Link>
             <div className="col-10">

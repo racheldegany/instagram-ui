@@ -1,6 +1,9 @@
 @import '../../assest/styles/base.scss';
 
 .Post{
+    time{
+        font-size: 13px;
+    }
     &_actions svg{
         margin: 2% 5% 2% 0 ;
         font-size: 20px;

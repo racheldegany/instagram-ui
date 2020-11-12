@@ -7,12 +7,16 @@ import Avatar from '../../../common/Avatar/Avatar';
 import { UserContext } from '../../../user-context';
 import './CommentCreate.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareSquare } from '@fortawesome/free-solid-svg-icons';
+import { faShareSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {  Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-function CommentCreate({postId, onAdd}) {
+function CommentCreate({postId, onAdd, modal, toggle}) {
 
     const { user } = useContext(UserContext);
+    // const [modal, setModal] = useState(false);
+
+    // const toggle = () => setModal(!modal);
 
     const submit = async (values, {resetForm}) => {
         try{
@@ -33,32 +37,45 @@ function CommentCreate({postId, onAdd}) {
     }
     
     return (
+
+        <Modal isOpen={modal} toggle={toggle} className="CommentCreate d-flex align-items-center justify-content-center">
+            {/* <ModalHeader toggle={toggle}>Add comment</ModalHeader> */}
+            <ModalBody>
+                <Formik
+                    initialValues={{content: ''}}
+                    validationSchema={CommentCreateSchema}
+                    onSubmit={submit}
+                >
+                     {({errors, touched, isSubmitting}) => (
+                        <Form className=" d-flex flex-column align-items-center justify-content-between">
+                            <div className="form-group d-flex justify-content-between align-items-center w-100"> 
+                                <Avatar image={user?.avatar} size="sm"/>
+                                <Field  className="rounded-pill" as="textarea" placeholder="Add comment.." name="content" id="comment"/>
+
+                            </div>
+                            
+                            {/* <div className="form-group"> */}
+                                {/* <label className="col" >Description</label> */}
+                            {/* </div > */}
+
+                            {isSubmitting && <Loader/>}
+                            <div className="form-group w-100 d-flex justify-content-end">
+                                    <button type="submit" className="btn" disabled={isSubmitting} onClick={toggle}><FontAwesomeIcon icon={ faShareSquare}/></button>
+                                <button className="btn" onClick={toggle}><FontAwesomeIcon icon={faTimes}/></button>
+                            </div>
+                        
+                        
+                        </Form>
+                    )}  
+                </Formik>
+            </ModalBody>
+            {/* <ModalFooter> */}
+                {/* <Button color="primary" onClick={toggle}>Do Something</Button>{' '} */}
+            {/* </ModalFooter> */}
+        </Modal>
         
 
-        <Formik
-        initialValues={{content: ''}}
-        validationSchema={CommentCreateSchema}
-        onSubmit={submit}
-        >
-        {({errors, touched, isSubmitting}) => (
-            <Form className=" CommentCreate d-flex align-items-center justify-content-between">
-                
-                <Avatar image={user?.avatar} size="sm"/>
-                
-                {/* <div className="form-group"> */}
-                    {/* <label className="col" >Description</label> */}
-                    <Field  className="rounded-pill" type="text" placeholder="Add comment.." name="content" id="comment"/>
-                {/* </div > */}
-
-                {isSubmitting && <Loader/>}
-                {/* <div className="form-group text-right"> */}
-                        <button type="submit" className="btn" disabled={isSubmitting}><FontAwesomeIcon icon={ faShareSquare}/></button>
-                {/* </div> */}
-            
-            
-            </Form>
-        )}
-        </Formik>
+       
     );
 }
 

@@ -12,21 +12,35 @@ function PostLike(props) {
     const [hasLiked, setHasLiked] = useState(hasUserLiked());
 
     function hasUserLiked() {
-        return props.likes.includes(props.userId);
+        // console.log(props.likes.includes(user._id));
+        return props.likes.includes(user._id);
     }
 
-    useEffect( () => {
-        handleLike();
-    }, [hasLiked])
+    // useEffect( () => {
+    //     handleLike();
+    // }, [hasLiked])
 
-    async function handleLike() {
-        try {
-            const post = hasLiked ? await like() : await unlike();
-            // setLikes(post.likes);
-        } catch(err) {
-            console.log(err);
-        }
-    }
+    // async function handleLike() {
+    //     try {
+    //         const post = hasLiked ? await like() : await unlike();
+    //         console.log(post);
+    //         props.setLikes(post.likes);
+    //     } catch(err) {
+    //         console.log(err);
+    //     }
+    // }
+
+    async function setLikeStatus(status) {
+        console.log(status);
+        setHasLiked(status);
+        console.log(hasLiked);
+		try {
+			const post = status ? await like() : await unlike();
+			props.setLikes(post.likes);
+		} catch(err) {
+			console.log(err);
+		}
+	}
     
     async function like() {
         try{
@@ -56,7 +70,7 @@ function PostLike(props) {
 
     return (
         <>
-           <FontAwesomeIcon icon={faHeart} style={{color: likedClass}} onClick={() => setHasLiked(!hasLiked)}/>
+           <FontAwesomeIcon icon={faHeart} style={{color: likedClass}} onClick={() => setLikeStatus(!hasLiked)}/>
             {/* <div className="allLikes flex-wrap">{likes.length} likes</div> */}
         </>
     );

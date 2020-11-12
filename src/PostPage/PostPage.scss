@@ -2,7 +2,7 @@
 
 .PostPage{
     // margin-top: $component-mt;
-    height: 77vh;
+    height: 85vh;
     overflow-y: auto;
     // position: relative;
      
@@ -37,6 +37,8 @@
     // }
 
     }
+
+    
     .details{
         font-size: 14px;
     }
@@ -48,7 +50,12 @@
 
     @include media-breakpoint-up(md){
         overflow-y: unset;
-        // height: 90vh;
+        height: 100vh;
+
+        .comments{
+            height: 80%;
+            overflow-y: auto;
+        }
 
         
     }

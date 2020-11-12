@@ -3,6 +3,9 @@
 .Feed{
     height: 84vh;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     @include media-breakpoint-up(md){
         height: 90vh; 

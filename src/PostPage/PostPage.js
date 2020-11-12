@@ -19,6 +19,12 @@ function PostPage(props) {
     const [post, setPost] = useState({})
     const { id } = useParams();  
     const [isLoading, setIsLoading] = useState(true);
+    const [modal, setModal] = useState(false);
+    const [likes, setLikes]= useState(post.likes);
+
+    // const [height, setHeight] = useState(null);
+
+    const toggle = () => setModal(!modal);
 
 
     useEffect(() => {
@@ -35,6 +41,8 @@ function PostPage(props) {
         setIsLoading(false);
     }
 
+    
+
     return (
         <article className="PostPage row">
         {isLoading ? <Loader/>
@@ -47,20 +55,22 @@ function PostPage(props) {
                 {/* </div> */}
                 <div className="Post_actions pt-2 pt-md-3 pt-lg-2 d-flex justify-content-around align-items-baseline ">
                         <button className=""><FontAwesomeIcon icon={faBookmark} /></button>
-                        <label  htmlFor="comment" className="text-center "><FontAwesomeIcon icon={faComment}/></label>
-                        <button  className=""><PostLike likes={post.likes} postId={post._id} userId={post.user._id} /></button>
+                        <label  htmlFor="comment" className="text-center " onClick={toggle}><FontAwesomeIcon icon={faComment}/></label>
+                        <button  className=""><PostLike likes={post.likes} postId={post._id} userId={post.user._id} setLikes={setLikes}/></button>
                 </div>
             </div>
-            <div className="col-md-5 offset-lg-1">
+            <div className="comments col-md-5 offset-lg-1">
                 <div className="details d-flex justify-content-between">
                     {/* <Moment format="DD/MM/YYYY">{post.createdAt}</Moment> */}
                     <Link to={`/profile/${post.user._id}`}  className="col-2 d-flex justify-content-center align-items-start">
                         <Avatar image={post.user.avatar} size="md"/>
                     </Link>
                     <div className="user col-10">
-                        <div className="d-flex justify-content-between ">
+                        <div className="d-flex justify-content-between align-items-center ">
                             <Username name={post.user.username} size="md"/>
-                            <div className="">likes num</div>
+                            <Link to={`/posts/${post._id}/likes`}>
+                                <div className="text-dark">{likes?.length || post.likes.length} likes</div>
+                            </Link>
 
                         </div>
                         {/* <span>{post.user.username}</span> */}
@@ -71,7 +81,8 @@ function PostPage(props) {
                     
                 </div>
 
-                <PostComments postId={post._id}/>
+                <PostComments postId={post._id} modal={modal} toggle={toggle}/>
+                {/* <CommentCreate/> */}
 
             </div>
                 

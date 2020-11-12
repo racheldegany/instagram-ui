@@ -130,7 +130,7 @@ function PostCreate(props) {
                             </div>
                         </div>
                        
-                        <div className="description d-flex flex-column justify-content-center align-items-center ">
+                        <div className="description d-flex flex-column justify-content-center align-items-center col-md-4 ">
                             {/* <label className="col" >Description</label> */}
                             <Field as="textarea" placeholder="Add description.." name="description" className="mb-4"/>
                             {isSubmitting && <Loader/>}

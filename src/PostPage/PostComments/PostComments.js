@@ -9,7 +9,7 @@ import CommentCreate from './CommentCreate/CommentCreate';
 import './PostComments.scss';
 // import { useParams } from 'react-router-dom';
 
-function PostComments({postId}) {
+function PostComments({postId, modal, toggle}) {
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     // const { id } = useParams();
@@ -45,17 +45,17 @@ function PostComments({postId}) {
         <>
             {isLoading ? <Loader/>
             :<div className="PostComments">
-                <div className="comments">
+                {/* <div className=""> */}
                     {comments.map(comment => (
                         <PostComment comment={comment} key={comment._id} />
                         ))
                         
                     }
-                </div>
-                <div className="create_comment d-flex justify-content-center align-items-center">
+                {/* </div> */}
+                {/* <div className="create_comment d-flex justify-content-center align-items-center"> */}
 
-                    <CommentCreate postId={postId} onAdd={onAddedComment}/>
-                </div>
+                    <CommentCreate postId={postId} onAdd={onAddedComment} modal={modal} toggle={toggle}/>
+                {/* </div> */}
                 
             </div>
             }

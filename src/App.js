@@ -18,6 +18,8 @@ import Profile from './Profile/Profile';
 import Search from './Search/Search';
 import ProfileEdit from './Profile/ProfileEdit/ProfileEdit';
 import PostPage from './PostPage/PostPage';
+import PostsRandom from './Menu/PostsRandom/PostsRandom';
+import PostLikesPage from './common/PostLikesPage/PostLikesPage';
 
 function App() {
 
@@ -59,7 +61,6 @@ function App() {
                         <Login/>
                     </Route>
                     <Route path="/profile/edit">
-                        
                         <ProfileEdit/>
                     </Route>
                     <Route path="/profile/:id">
@@ -71,12 +72,19 @@ function App() {
                     <Route path="/post/create">
                         <PostCreate/>
                     </Route>
+                    <Route path="/posts/:id/likes">
+                          <PostLikesPage/>
+                    </Route>
                     <Route path="/posts/:id">
                       <PostPage/>
+                    </Route>
+                    <Route path="/post/random">
+                        <PostsRandom/>
                     </Route>
                     <Route path="/">
                         <Feed/>
                     </Route>
+                    
                   </Switch>
                 </PageTransition>
               )}

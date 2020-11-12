@@ -28,7 +28,7 @@ export const RegisterSchema = Yup.object().shape({
     if(memo[type].hasOwnProperty(value)){
       return memo[type][value];
     }
-    const res = await fetch(config.apiUrl + `/users/check?${type}=${value}`);
+    const res = await fetch(config.apiUrl + `/users/register?${type}=${value}`);
     memo[type][value] = !(await res.json());
 	  return memo[type][value];
   };

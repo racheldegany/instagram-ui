@@ -1,3 +1,3 @@
 export default {
-    apiUrl: 'https://lit-beach-17491.herokuapp.com'
+    apiUrl: 'http://3.139.46.83:4000'
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faHome, faPlusCircle, faHandHoldingHeart, faSearch, } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faPlusCircle, faMeteor, faSearch, } from '@fortawesome/free-solid-svg-icons';
 import MenuAvatar from './MenuAvatar/MenuAvatar';
 
 function Menu(props) {
@@ -31,8 +31,8 @@ function Menu(props) {
                     </Link>
                 </li>
                 <li className="nav-item active">
-                    <Link to="/notification/:userId" className="text-white">
-                        <FontAwesomeIcon icon={faHandHoldingHeart} />
+                    <Link to="/post/random" className="text-white">
+                        <FontAwesomeIcon icon={faMeteor} />
                     </Link>
                 </li>
                 <li className="nav-item active">
