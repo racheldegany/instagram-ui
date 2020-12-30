@@ -28,7 +28,8 @@ function Post(props) {
                 <Moment format="DD/MM/YYYY" className="font-weight-light">{props.postData.createdAt}</Moment>
             </div>
             <Link className="Post_image" to={`/posts/${props.postData._id}`}>
-                <img className="w-100" src={`${config.apiUrl}/posts/${props.postData.image}`} />
+                <img className="w-100"  src={`data:image/jpeg;base64,${props.postData.image}`}/>
+                {/* src={`${config.apiUrl}/posts/${props.postData.image}`}  */}
             </Link>
             <div className="Post_actions p-2 d-flex align-items-center justify-content-between">
                 <PostLike likes={likes || props.postData.likes}

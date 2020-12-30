@@ -74,7 +74,9 @@ function PostsRandom(props) {
                     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" className="d-flex justify-content-center">
                     <img className="image" onClick={showPost} src={'https://i.pinimg.com/564x/82/b6/b4/82b6b4e83d49c57b604d299dc80bebe1.jpg'}/>
                             <Link className="image" to={`/posts/${post?._id}`}>
-                                <img className="" src={`${config.apiUrl}/posts/${post?.image}`} />
+                                <img className="" src={`data:image/jpeg;base64,${post?.image}`} />
+                                {/* {${config.apiUrl}/posts/${post?.image}`} */}
+                                
                             </Link>
                         </ReactCardFlip>
                     </Carousel.Item>

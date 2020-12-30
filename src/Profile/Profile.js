@@ -41,7 +41,9 @@ function Profile(props) {
             <div className="Profile-posts d-flex flex-wrap">
                 {posts.map(post => (
                     <Link to={`/posts/${post._id}`} className="col-4 p-1">
-                        <img className="  w-100" src={`${config.apiUrl}/posts/${post.image}`} key={post._id}/>
+                        <img className="  w-100" src={`data:image/jpeg;base64,${post.image}`} key={post._id}/>
+                        
+                        {/* {config.apiUrl}/posts/${post.image} */}
                     </Link>
                 ))}
             </div>

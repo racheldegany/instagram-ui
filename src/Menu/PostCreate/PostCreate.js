@@ -27,6 +27,7 @@ function PostCreate(props) {
         const data = new FormData();
         for(const key in values) {
             data.append(key, values[key]);
+            console.log(key);
         }
         return data;
     }

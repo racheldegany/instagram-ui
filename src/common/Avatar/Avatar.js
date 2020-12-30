@@ -10,9 +10,10 @@ function Avatar(props) {
 	if(props.image instanceof Blob){
 		image = URL.createObjectURL(props.image)
 	} else {
-		image = props.image ? `${config.apiUrl}/avatars/${props.image}`
+		image = props.image ? `data:image/jpeg;base64,${props.image}`
 							: avatarDefault;
 	}
+	//`${config.apiUrl}/avatars/${props.image}`
 	const className = 'Avatar--' + size;
 	return (
 		<img src={image} className={'Avatar ' + className} />

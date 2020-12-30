@@ -51,7 +51,8 @@ function PostPage(props) {
             <div className="post_image col-md-7 col-lg-6">
                 
                 {/* <div className="image"> */}
-                    <img src={`${config.apiUrl}/posts/${post.image}`} />
+                    <img  src={`data:image/jpeg;base64,${post.image}`} />
+                    {/* src={`${config.apiUrl}/posts/${post.image}` */}
                 {/* </div> */}
                 <div className="Post_actions pt-2 pt-md-3 pt-lg-2 d-flex justify-content-around align-items-baseline ">
                         <button className=""><FontAwesomeIcon icon={faBookmark} /></button>
